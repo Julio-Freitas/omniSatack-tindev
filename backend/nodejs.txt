@@ -1,0 +1,76 @@
+/* Resumo da semana OmniStak  back-end*/
+yarn init -y criar o package.json
+    package.json => Contém informações do projetos e suas depedências.
+
+yarn add express
+    express => Mircroframwork trabalha com requisições e resposta. Requisições http
+yarn.lock => Armazenas as depedências de nossas depedências.
+
+Ponto de entrada entrey pointer
+SRC => server.json
+
+importar o express
+const express = require('express');
+    express é uma função que quando chamada cria um novo servidor, uma porta de entrada para receber requisições e retornar respostas
+  
+  criando servidor do express
+    const server = express();
+
+// GET, POST, PUT, DELETE
+
+    criando respostas
+    server.get('/', (req, res)=>{
+        //  req trás todas as informações solicitadas pelo o usuários
+        //res retorno que vai aparecer para o cliente que fez a requisição;
+        // res.send() envia uma resposta para o usuários
+        //req.query => contém todos os parmâmentos que vem da url
+    });
+    json => JavaScripit Objetivo notation, sem dentro de chaves contento um par de valores key: valor
+    json {
+        "name": "JavaScripit",
+        "key": "valor"
+    }
+ declrando uma porta de para as requisições
+ server.listern('33333');
+
+ yarn add nodemon -D
+ -D => informa que será usada apenas para desenvolviemnto
+nodemon => roda um sript toda vez que ocorre uma atualização.
+Para isso é necessário declarar o sripit no package.json
+    "script" : {
+        "dev" : "nodemon src/server.js"
+    }
+
+criar routes.js => vai conter todas as rotas da aplicação
+const express = require('express');
+const routes = express.Router(); cria um objeto especifico para rotas
+module.exports = routes ; deixando as routes visível para outros arquivos, para chamá-lo basta importá-lo
+com o require('caminho da modulo');
+
+server.use(routes) => adicionado as rotas dentro configuradas dentro de routes.js
+
+/** criar devs **/
+routes.post('/devs', (req, res)=>{
+    req.body => recuperamos as informações enviada pelo o cliente
+    re.json(req.body); recuperando informações em formato json
+});
+
+mongoDB atlas => conseguimos usar um db gratuito;
+cluster => onde criamos o servidor 500mb livres
+    create cluster
+    DataBase ACesses => add new user => user e pass
+    select read and write DataBase;
+    connect => connect your aplication => node.js copy url
+    install mongouse => para usar a sintaxe de bd em JavaScripit
+        importa no servidor antes das rotas
+        const mongoose = require('mongoose');
+        mongoose.connect('url importada do cluster no mongoDB atlas', {useNewUrlParser: true});
+        
+
+    networking ACesses => liberar acesso aos ips 
+    select allow access from anywhere
+    confirm
+
+
+
+
