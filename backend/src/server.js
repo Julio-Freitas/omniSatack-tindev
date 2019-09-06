@@ -5,6 +5,8 @@ const cors = require('cors');
 
 const app = express(); // criando servidor 
 const server = require('http').Server(app);
+
+const port = process.env.PORT || 3333 ;
 /** Informando ao front que deu match */
 const io = require('socket.io')(server);
 
@@ -33,4 +35,11 @@ app.use(express.json()); // informando que vamos utilizar o json
 app.use(routes); // usando as rotas 
 
 
-server.listen('3333'); // criando porta do servidor
+
+server.listen(port, (err) => {
+    if (err) {
+        console.log('Servidor não rodou!');
+    } else {
+        console.log('Servidor rodando');
+    }
+});
