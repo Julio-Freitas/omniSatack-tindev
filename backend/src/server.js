@@ -1,5 +1,6 @@
 const express = require('express'); // importanto express
 const routes = require('./routes'); // importanto as rotas
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -7,6 +8,8 @@ const app = express(); // criando servidor
 const server = require('http').Server(app);
 
 const port = process.env.PORT || 3333 ;
+
+server.use(express.static(path.join(__dirname, 'public')));
 /** Informando ao front que deu match */
 const io = require('socket.io')(server);
 
